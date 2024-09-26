@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+    <style>
+        .citation{
+            font-style: italic;
+            color: rgb(160, 71, 71);
+        }
+        .fondvert{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <h id="title">DOM <strong>html</strong> </h>
+    <p class="fondvert">
+        chapitres1: Lorem ipsum dolor sit.
+        <strong>text en gras </strong> Lorem ipsum dolor, sit amet
+         consectetur adipisicing elit. Qui, in.
+         <span class="citation">
+            citation 1 : Lorem ipsum dolor sit amet consectetur.
+         </span>
+         Lorem ipsum dolor sit amet consectetur adipisicing.
+    </p>
+    <p>
+        Chapitre 2: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+         Quia inventore cum aliquam quisquam deserunt suscipit!
+         <span class="citation">
+            citation 1 : Lorem ipsum dolor sit amet consectetur.
+         </span> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Mollitia, qui.
+
+    </p>
+    <ul>
+        <li>Fraises</li>
+        <li>Pommes</li>
+        <li>Poires</li>
+        <li>bananes</li>
+        <li>Kiwis</li>
+        <li>Raisin</li>
+    </ul>
+    <div class="lien">
+        <a href="#">Cliquez ici</a>
+    </div>
+    <!-- *************javascript***************** -->
+     <script>
+        console.log( 'largeur de l ecran:' + window.innerWidth + 'px' );
+        console.log('chemin du fichier:' + document.documentURI);
+
+        //Selectionner par son id
+        let title = document.getElementById('title'); 
+        //declarer uniquement le text
+        console.log(title.innerText); 
+         //Recupere uniquement le html
+         console.log(title.innerHTML); 
+
+         //modifier le contenu TEXT
+         title.innerText = '<em> Nouveau</em> titre';
+         //modifier le contenu html
+         title.innerHTML = '<em> Nouveau</em> titre';
+
+         //slectionner par leur class
+         let citation = document.getElementsByClassName('citation');
+         console.log(citation);//tableau 
+         console.log(citation [1]);//tableau a l'index 1
+         
+         //slectionner par leur class
+         let paragraphe = document.getElementsByTagName('p');
+         console.log(paragraphe[0].innerText); //Tableau
+
+          //selectionner avec les selecteurs css
+         console.log(document.querySelector('#title'));
+         console.log(document.querySelectorAll('.citation'));
+
+          //recuperer des attribut html
+          let a = document.querySelector('a');
+          console.log(a.getAttribute('href'));
+          a.setAttribute('href', 'https://www.weformyou.fr');
+
+          //modifier le style css
+        //   document.querySelector('p').style.backgroundColor = '#aaa';
+
+          //Recuper la liste des class css d'un element html
+          console.log(document.querySelector('p').classList);
+
+          //Ajouter une class css d'un element html
+        //   document.querySelector('p').classList.add('fondvert');
+
+          //Supprimer une class css d'un element html
+        //   document.querySelector('p').classList.remove('fondvert');
+
+          //Selectioer les elements pair
+         let tabLi = document.querySelectorAll('ul li:nth-child(even)');
+         console.log(tabLi);
+         for(let li of tabLi) {
+            li.classList.add('fondvert');
+         }
+
+        //tester la presence d'une class css sur un element html
+        if (
+            document.querySelector('li:nth-child(2)').classList.contains('fondvert')
+        ){
+            console.log('la classe verte est affectee');
+        }
+
+        //echanger la presence d'une class css a un element html
+        document.querySelector('p').classList.toggle('fondvert');
+
+        //Deplacer deselement html
+        document.querySelector('p').appendChild(document.querySelector('h1'));
+     </script>
+</body>
+</html>
